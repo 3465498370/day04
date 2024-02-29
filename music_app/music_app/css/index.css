@@ -1,0 +1,195 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /*超出内容区域隐藏*/
+}
+
+/* 公共样式：水平弹性布局 */
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+/*公共样式：垂直弹性布局*/
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+/*完美居中方案*/
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.head{
+    flex:1;
+    background: linear-gradient(135deg,#81fbb8,#28c76f);
+}
+.head div{
+    color:#fff;
+}
+.home-icon,
+.share-icon{
+    flex: 1;
+}
+.music-name{
+    flex: 5;
+}
+
+.body{
+    position: relative;
+    flex: 9;
+}
+.body-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    filter:blur(30px);
+}
+
+.cover{
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    animation: loop 5s infinite linear; /*执行loop动画 一次执行需要5秒，执行无限次，匀速执行*/
+    animation-play-state: paused; /*暂停*/
+}
+
+.playing{
+    animation-play-state: running;
+}
+
+
+.cover-img{
+    width: 50%;
+}
+.cover-disc{
+    width: 90%;
+}
+
+.cover img{
+    position: absolute;
+}
+
+.foot{
+    flex:2;
+    background: linear-gradient(135deg,#81fbb8,#28c76f);
+}
+
+.box-time,
+.box-progress{
+    flex:1;
+    color:#fff;
+    font-size: 0.8rem;
+}
+
+.box-time div{
+    padding:5px 10px;
+    flex: 1;
+}
+.time-total{
+    text-align: right;
+}
+
+.box-progress{
+    padding: 0 10px;
+}
+
+.progress-touch{
+    height: 100%;
+    width: 100%;
+}
+
+.progress-bg{
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.3);
+}
+
+.progress{
+    width: 0;
+    height: 100%;
+    background: #fff;
+}
+
+.box-btns{
+    flex:4;
+}
+
+.box-btns>button{
+    background: transparent;
+    border:0;
+    color:#fff;
+}
+
+.btn-loop,
+.btn-list{
+    flex: 1;
+}
+
+.btn-prev,
+.btn-next{
+    flex: 2;
+}
+
+.btn-play-pause{
+    flex: 3
+}
+/* 歌曲列表弹层样式 */
+#music-list-dialog{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 10rem;
+    background: rgba(0,0,0,.8);
+    display: none; /*默认隐藏弹框*/
+    overflow-y: scroll; /*当y轴内容超出显示区域时，出现滚动条*/
+}
+#btn-close{
+    position:fixed;
+    top: 10.1rem;
+    right: .5rem;
+    color:#fff;
+    font-size: 1.5rem;
+}
+#music-list{
+    list-style: none;
+}
+#music-list li{
+    padding:0 .5rem;
+    color:#ccc;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: .9rem;
+    border-bottom: 1px dotted rgba(255,255,255,.2);
+}
+/* 正在播放的歌曲激活样式 */
+.active{
+    color:#28c76f !important; /*强调当前属性优先级最高*/
+    background: rgba(255,255,255,.5);
+}
+
+/* 创建自定义动画 */
+@keyframes loop{
+  /* 定义动画关键帧 */
+  from{
+    transform: rotate(0deg); /*旋转角度：0*/
+  }
+
+  to{
+    transform: rotate(360deg);/*旋转角度：360*/
+  }
+}
